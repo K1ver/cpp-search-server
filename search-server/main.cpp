@@ -7,8 +7,8 @@
 
     bool check(int num) {
         string str = to_string(num);
-        for (int i = 0; i < str.length(); ++i) {
-            if(str[i] == '3') {
+        for (char c : str) {
+            if(c == '3') {
                 return true;
             }
         }
@@ -17,7 +17,7 @@
 
     int main() {
         int answ = 0;
-        for (int i = 1; i >=1000; ++i) {
+        for (int i = 1; i <=1000; ++i) {
             if (check(i)) {
                 ++answ;
             }
