@@ -89,8 +89,7 @@ void TestFindAddedDocumentByDocumentWord() {
         ASSERT_EQUAL(doc0.id, doc_id);
     }
 }
- 
-// Поддержка минус-слов. Документы, содержащие минус-слова из поискового запроса, не должны включаться в результаты поиска. 
+
 void TestExcludeDocumentsWithMinusWordsFromResults() {
     SearchServer server;
     server.AddDocument(101, "fluffy cat fluffy tail"s, DocumentStatus::ACTUAL, { 1,2,3 });
@@ -109,8 +108,7 @@ void TestExcludeDocumentsWithMinusWordsFromResults() {
     }
  
 }
- 
-// Соответствие документов поисковому запросу. 
+
 void TestMatchedDocuments() {
     SearchServer server;
     server.SetStopWords("and in on"s);
@@ -129,8 +127,7 @@ void TestMatchedDocuments() {
         ASSERT(matched_words.empty());
     }
 }
- 
-// Сортировка найденных документов по релевантности. 
+
 void TestSortResultsByRelevance() {
     SearchServer server;
     server.AddDocument(100, "fluffy cat fluffy tail"s, DocumentStatus::ACTUAL, { 1, 2, 3 });
@@ -145,8 +142,7 @@ void TestSortResultsByRelevance() {
         }
     }
 }
- 
-// Вычисление рейтинга документов. 
+
 void TestCalculateDocumentRating() {
     SearchServer server;
     const vector<int> ratings = { 10, 11, 3 };
@@ -159,8 +155,7 @@ void TestCalculateDocumentRating() {
         ASSERT_EQUAL(found_docs[0].rating, average);
     }
 }
- 
-// Фильтрация результатов поиска с использованием предиката. 
+
 void TestDocumentSearchByPredicate() {
     SearchServer server;
     server.AddDocument(100, "cat in the city"s, DocumentStatus::ACTUAL, { 1, 2, 3 });
@@ -172,8 +167,7 @@ void TestDocumentSearchByPredicate() {
         ASSERT(found_docs[0].id == 100);
     }
 }
- 
-// Поиск документов, имеющих заданный статус. 
+
 void TestDocumentSearchByStatus() {
     const int doc_id1 = 42;
     const int doc_id2 = 43;
@@ -194,8 +188,7 @@ void TestDocumentSearchByStatus() {
         ASSERT(found_docs.size() == 2);
     }
 }
- 
-// Корректное вычисление релевантности найденных документов. 
+
 void TestCalculateRelevance() {
     SearchServer server;
     server.AddDocument(100, "white cat with new ring"s, DocumentStatus::ACTUAL, { 1, 2, 3 });
