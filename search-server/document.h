@@ -1,6 +1,8 @@
 #pragma once
 #include <iostream>
  
+using namespace std::string_literals;
+
 struct Document {
     Document() = default;
     Document(int id, double relevance, int rating)

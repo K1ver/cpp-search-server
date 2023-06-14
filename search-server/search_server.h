@@ -9,6 +9,7 @@
 #include <string>
 #include <vector>
 #include "read_input_functions.h"
+#include "document.h"
 #include "string_processing.h" 
  
 using namespace std::string_literals;
@@ -21,9 +22,9 @@ public:
     void AddDocument(int document_id, const std::string& document, DocumentStatus status, const std::vector<int>& ratings);
  
     template <typename DocumentPredicate>
-    std::vector<Document> FindTopDocuments(const std::string& raw_query, DocumentPredicate document_predicate) const;
- 
+    std::vector<Document> FindTopDocuments(const std::string& raw_query, DocumentPredicate document_predicate) const; 
     std::vector<Document> FindTopDocuments(const std::string& raw_query, DocumentStatus status) const;
+    
     std::vector<Document> FindTopDocuments(const std::string& raw_query) const;
     int GetDocumentCount() const;
     int GetDocumentId(int index) const;
